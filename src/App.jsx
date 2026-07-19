@@ -13,6 +13,7 @@ import './App.css'
 
 const navLinks = [
   { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
   { href: '#features', label: 'Features' },
   { href: '#skills', label: 'Skills' },
@@ -158,16 +159,16 @@ const features = [
 ]
 
 const skills = [
-  { name: 'Laravel', level: 'Expert' },
-  { name: 'PHP', level: 'Expert' },
-  { name: 'React', level: 'Advanced' },
-  { name: 'Make.com', level: 'Expert' },
-  { name: 'n8n', level: 'Expert' },
-  { name: 'Automation', level: 'Expert' },
-  { name: 'REST APIs', level: 'Expert' },
-  { name: 'MySQL', level: 'Advanced' },
-  { name: 'JavaScript', level: 'Advanced' },
-  { name: 'Webhooks', level: 'Advanced' },
+  { name: 'Laravel', level: 'Expert', badge: 'ship it' },
+  { name: 'PHP', level: 'Expert', badge: 'core power' },
+  { name: 'React', level: 'Advanced', badge: 'UI mode' },
+  { name: 'Make.com', level: 'Expert', badge: 'auto-magic' },
+  { name: 'n8n', level: 'Expert', badge: 'flow boss' },
+  { name: 'Automation', level: 'Expert', badge: 'zero busywork' },
+  { name: 'REST APIs', level: 'Expert', badge: 'clean contracts' },
+  { name: 'MySQL', level: 'Advanced', badge: 'data locked' },
+  { name: 'JavaScript', level: 'Advanced', badge: 'runtime ready' },
+  { name: 'Webhooks', level: 'Advanced', badge: 'event fired' },
 ]
 
 const faqs = [
@@ -251,6 +252,12 @@ function useTypewriter(words, speed = 70, pause = 1600) {
 }
 
 const floatCodes = ['Laravel', 'n8n', 'Make', 'React', 'API', 'PHP']
+const portraitBadges = [
+  { text: 'available now', className: 'hero__badge--1' },
+  { text: 'ship clean code', className: 'hero__badge--2' },
+  { text: 'automation pro', className: 'hero__badge--3' },
+  { text: "let's build", className: 'hero__badge--4' },
+]
 const typedRoles = [
   'Laravel Engineer',
   'Automation Expert',
@@ -262,7 +269,7 @@ function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [openFaq, setOpenFaq] = useState(0)
-  const [form, setForm] = useState({ name: '', email: '', phone: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [formStatus, setFormStatus] = useState('idle')
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const [activeSection, setActiveSection] = useState('home')
@@ -272,7 +279,7 @@ function App() {
     const onScroll = () => {
       setScrolled(window.scrollY > 20)
 
-      const ids = ['home', 'projects', 'features', 'skills', 'contact', 'faqs']
+      const ids = ['home', 'about', 'projects', 'features', 'skills', 'contact', 'faqs']
       let current = 'home'
       for (const id of ids) {
         const el = document.getElementById(id)
@@ -291,6 +298,15 @@ function App() {
     return () => {
       document.body.style.overflow = ''
     }
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (!menuOpen) return undefined
+    const onKey = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
 
   const closeMenu = () => setMenuOpen(false)
@@ -317,6 +333,7 @@ function App() {
             name: form.name.trim(),
             email: form.email.trim(),
             phone: form.phone.trim(),
+            message: form.message.trim(),
             source: 'adnan-portfolio',
             submittedAt: new Date().toISOString(),
           }),
@@ -328,7 +345,7 @@ function App() {
       }
 
       setFormStatus('success')
-      setForm({ name: '', email: '', phone: '' })
+      setForm({ name: '', email: '', phone: '', message: '' })
     } catch (error) {
       console.error(error)
       setFormStatus('error')
@@ -346,6 +363,9 @@ function App() {
 
   return (
     <div className="page">
+      <a className="skip-link" href="#home">
+        Skip to content
+      </a>
       <div className="noise" aria-hidden="true" />
       <div className="ambient" aria-hidden="true">
         <span className="ambient__orb ambient__orb--1" />
@@ -383,6 +403,16 @@ function App() {
 
           <a className="nav__cta" href="#contact" onClick={closeMenu}>
             Hire me
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5 12h14M13 5l7 7-7 7"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
 
           <button
@@ -422,9 +452,9 @@ function App() {
               </p>
               <p className="hero__headline anim-in anim-in--4">
                 Production web systems —{' '}
-                <span className="text-yellow">Laravel</span> backends,{' '}
-                <span className="text-yellow">React</span> interfaces, and{' '}
-                <span className="text-yellow">automation</span> that removes busywork.
+                <span className="text-accent">Laravel</span> backends,{' '}
+                <span className="text-accent">React</span> interfaces, and{' '}
+                <span className="text-accent">automation</span> that removes busywork.
               </p>
               <p className="hero__lede anim-in anim-in--5">
                 Clean architecture, reliable APIs, and workflows that help teams ship faster.
@@ -459,6 +489,13 @@ function App() {
                     className={`hero__floater hero__floater--${index + 1}`}
                   >
                     {`<${code} />`}
+                  </span>
+                ))}
+              </div>
+              <div className="hero__badges" aria-hidden="true">
+                {portraitBadges.map((badge) => (
+                  <span key={badge.text} className={`hero__badge ${badge.className}`}>
+                    {badge.text}
                   </span>
                 ))}
               </div>
@@ -695,8 +732,11 @@ function App() {
                   key={`${skill.name}-${index}`}
                   className="skill-chip"
                 >
+                  <span className="skill-chip__badge" aria-hidden="true">
+                    {skill.badge}
+                  </span>
                   <h3>{skill.name}</h3>
-                  <span>{skill.level}</span>
+                  <span className="skill-chip__level">{skill.level}</span>
                 </article>
               ))}
             </div>
@@ -720,7 +760,7 @@ function App() {
                   </p>
                   <div className="contact__actions">
                     <a className="btn btn--dark" href="mailto:adnan.codes50@gmail.com">
-                      adnan.codes50@gmail.com
+                      Email me
                     </a>
                     <a
                       className="btn btn--white"
@@ -728,7 +768,7 @@ function App() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      WhatsApp 0344 6879941
+                      WhatsApp
                     </a>
                   </div>
                 </div>
@@ -771,6 +811,17 @@ function App() {
                       placeholder="03XX XXXXXXX"
                       required
                       autoComplete="tel"
+                      disabled={formStatus === 'loading'}
+                    />
+                  </label>
+                  <label>
+                    <span>Project details</span>
+                    <textarea
+                      name="message"
+                      value={form.message}
+                      onChange={onFormChange}
+                      placeholder="What do you need built? Timeline or links welcome."
+                      rows={4}
                       disabled={formStatus === 'loading'}
                     />
                   </label>
@@ -819,6 +870,8 @@ function App() {
                       type="button"
                       className="faq-item__q"
                       aria-expanded={isOpen}
+                      aria-controls={`faq-panel-${index}`}
+                      id={`faq-btn-${index}`}
                       onClick={() => setOpenFaq(isOpen ? -1 : index)}
                     >
                       <span className="faq-item__index">0{index + 1}</span>
@@ -826,6 +879,9 @@ function App() {
                       <span className="faq-item__icon" aria-hidden="true" />
                     </button>
                     <div
+                      id={`faq-panel-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${index}`}
                       className="faq-item__panel"
                       style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                     >
@@ -902,7 +958,16 @@ function App() {
         href="#home"
         aria-label="Back to top"
       >
-        ↑
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 19V5M5 12l7-7 7 7"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </a>
     </div>
   )

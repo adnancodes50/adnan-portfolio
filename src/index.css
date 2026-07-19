@@ -1,31 +1,30 @@
 :root {
-  /* Midnight canvas */
-  --bg: #071018;
-  --bg-elevated: #0c1622;
-  --bg-soft: #101c2b;
-  --ink: #edf4ff;
-  --ink-soft: #9db0c7;
-  --ink-muted: #6f839c;
+  /* Professional deep navy canvas */
+  --bg: #0b1017;
+  --bg-elevated: #121925;
+  --bg-soft: #1a2332;
+  --ink: #eef2f6;
+  --ink-soft: #a8b3c0;
+  --ink-muted: #7e8b9a;
   --white: #ffffff;
-  --on-accent: #041018;
+  --on-accent: #0a1018;
 
-  /* Attractive accents (teal + sky + coral) */
-  --accent: #3ee0c2;
-  --accent-deep: #24c4a8;
-  --accent-2: #6ea8ff;
-  --accent-warm: #ff8f6b;
-  --accent-rgb: 62, 224, 194;
-  --accent-2-rgb: 110, 168, 255;
-  --warm-rgb: 255, 143, 107;
+  /* Muted steel blue — professional, restrained */
+  --accent: #6d8fad;
+  --accent-deep: #557693;
+  --accent-2: #8eabc4;
+  --accent-warm: #7a96ad;
+  --accent-rgb: 109, 143, 173;
+  --accent-2-rgb: 142, 171, 196;
+  --warm-rgb: 122, 150, 173;
 
-  /* Legacy aliases — keep existing styles working */
   --yellow: var(--accent);
   --yellow-deep: var(--accent-deep);
-  --line: rgba(148, 180, 220, 0.14);
+  --line: rgba(238, 242, 246, 0.1);
 
-  --font-display: 'Poppins', sans-serif;
-  --font-body: 'Poppins', sans-serif;
-  --font-mono: 'Poppins', sans-serif;
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Sans', sans-serif;
 
   --text-label: 0.75rem;
   --text-sm: 0.875rem;
@@ -35,12 +34,12 @@
   --text-section: clamp(1.75rem, 3.8vw, 2.5rem);
   --text-hero: clamp(2.75rem, 8vw, 5.25rem);
 
-  --leading-tight: 1.15;
+  --leading-tight: 1.12;
   --leading-snug: 1.4;
   --leading-body: 1.65;
-  --tracking-tight: -0.02em;
-  --tracking-display: -0.03em;
-  --tracking-label: 0.1em;
+  --tracking-tight: -0.025em;
+  --tracking-display: -0.035em;
+  --tracking-label: 0.08em;
 
   --text-xs: var(--text-label);
   --text-xl: var(--text-section);
@@ -50,7 +49,7 @@
   background: var(--bg);
   font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: var(--leading-body);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -73,8 +72,8 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(ellipse 70% 50% at 15% -10%, rgba(var(--accent-rgb), 0.12), transparent 55%),
-    radial-gradient(ellipse 55% 45% at 90% 10%, rgba(var(--accent-2-rgb), 0.1), transparent 50%),
+    radial-gradient(ellipse 52% 40% at 10% -8%, rgba(var(--accent-rgb), 0.08), transparent 58%),
+    radial-gradient(ellipse 38% 32% at 92% 6%, rgba(255, 255, 255, 0.025), transparent 52%),
     var(--bg);
   color: var(--ink);
   overflow-x: clip;
@@ -119,6 +118,6 @@ button {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--on-accent);
+  background: rgba(var(--accent-rgb), 0.3);
+  color: #fff;
 }

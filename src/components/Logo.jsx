@@ -11,20 +11,20 @@ export default function Logo({ className = '' }) {
       <title>Adnan Ali</title>
       <defs>
         <linearGradient id="logoScreen" x1="18" y1="18" x2="48" y2="42" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#10263a" />
-          <stop offset="1" stopColor="#071018" />
+          <stop stopColor="#102030" />
+          <stop offset="1" stopColor="#0a121c" />
         </linearGradient>
         <linearGradient id="logoBody" x1="12" y1="20" x2="50" y2="48" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#243447" />
-          <stop offset="1" stopColor="#141e2c" />
+          <stop stopColor="#1e2c3c" />
+          <stop offset="1" stopColor="#121a26" />
         </linearGradient>
         <linearGradient id="logoSkin" x1="24" y1="36" x2="42" y2="54" gradientUnits="userSpaceOnUse">
           <stop stopColor="#f0c2a4" />
           <stop offset="1" stopColor="#d99672" />
         </linearGradient>
         <linearGradient id="logoAccent" x1="66" y1="18" x2="160" y2="48" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#3ee0c2" />
-          <stop offset="1" stopColor="#6ea8ff" />
+          <stop stopColor="#6d8fad" />
+          <stop offset="1" stopColor="#8eabc4" />
         </linearGradient>
         <filter id="logoSoft" x="-20%" y="-20%" width="140%" height="140%">
           <feDropShadow dx="0" dy="2" stdDeviation="1.4" floodColor="#000" floodOpacity="0.35" />
@@ -32,7 +32,7 @@ export default function Logo({ className = '' }) {
       </defs>
 
       {/* Mark */}
-      <rect x="1" y="5" width="54" height="54" rx="15" fill="#0b1522" stroke="url(#logoAccent)" strokeWidth="1.4" />
+      <rect x="1" y="5" width="54" height="54" rx="15" fill="#0c1420" stroke="url(#logoAccent)" strokeWidth="1.4" />
       <rect x="1" y="5" width="54" height="54" rx="15" fill="url(#logoAccent)" opacity="0.08" />
 
       {/* Laptop */}
@@ -40,15 +40,15 @@ export default function Logo({ className = '' }) {
         <rect x="11" y="18" width="34" height="23" rx="3.2" fill="url(#logoBody)" />
         <rect x="13.4" y="20.2" width="29.2" height="17.8" rx="1.8" fill="url(#logoScreen)" />
         {/* code lines on screen */}
-        <rect x="16" y="23.5" width="12" height="1.4" rx="0.7" fill="#3ee0c2" opacity="0.9" />
-        <rect x="16" y="26.5" width="18" height="1.4" rx="0.7" fill="#6ea8ff" opacity="0.75" />
-        <rect x="16" y="29.5" width="9" height="1.4" rx="0.7" fill="#3ee0c2" opacity="0.55" />
-        <rect x="16" y="32.5" width="15" height="1.4" rx="0.7" fill="#ff8f6b" opacity="0.7" />
+        <rect x="16" y="23.5" width="12" height="1.4" rx="0.7" fill="#6d8fad" opacity="0.85" />
+        <rect x="16" y="26.5" width="18" height="1.4" rx="0.7" fill="#8eabc4" opacity="0.7" />
+        <rect x="16" y="29.5" width="9" height="1.4" rx="0.7" fill="#6d8fad" opacity="0.5" />
+        <rect x="16" y="32.5" width="15" height="1.4" rx="0.7" fill="#a1a1aa" opacity="0.7" />
         {/* camera dot */}
-        <circle cx="28" cy="19.2" r="0.7" fill="#3ee0c2" opacity="0.7" />
+        <circle cx="28" cy="19.2" r="0.7" fill="#6d8fad" opacity="0.65" />
         {/* hinge + base */}
-        <path d="M10 41.2h36c1.4 0 2.3.7 2.3 1.5v.9c0 .4-.5.7-1.2.7H8.9c-.7 0-1.2-.3-1.2-.7v-.9c0-.8.9-1.5 2.3-1.5Z" fill="#1a2740" />
-        <path d="M18 43.4h20c.5 0 .8.2.8.4s-.3.4-.8.4H18c-.5 0-.8-.2-.8-.4s.3-.4.8-.4Z" fill="#3ee0c2" opacity="0.45" />
+        <path d="M10 41.2h36c1.4 0 2.3.7 2.3 1.5v.9c0 .4-.5.7-1.2.7H8.9c-.7 0-1.2-.3-1.2-.7v-.9c0-.8.9-1.5 2.3-1.5Z" fill="#162030" />
+        <path d="M18 43.4h20c.5 0 .8.2.8.4s-.3.4-.8.4H18c-.5 0-.8-.2-.8-.4s.3-.4.8-.4Z" fill="#6d8fad" opacity="0.4" />
       </g>
 
       {/* Realistic hand resting on trackpad area */}
@@ -76,8 +76,8 @@ export default function Logo({ className = '' }) {
       <text
         x="68"
         y="29"
-        fill="#edf4ff"
-        fontFamily="Poppins, Arial, sans-serif"
+        fill="#e8eef4"
+        fontFamily="Sora, Arial, sans-serif"
         fontSize="23"
         fontWeight="700"
         letterSpacing="-0.6"
@@ -88,7 +88,7 @@ export default function Logo({ className = '' }) {
         x="68"
         y="46"
         fill="url(#logoAccent)"
-        fontFamily="Poppins, Arial, sans-serif"
+        fontFamily="Sora, Arial, sans-serif"
         fontSize="10.5"
         fontWeight="600"
         letterSpacing="2"
