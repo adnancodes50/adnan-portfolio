@@ -9,27 +9,6 @@ import n8nImg from './assets/projects/n8n-workflow.png'
 import hybridImg from './assets/projects/make-n8n-hybrid.png'
 import codeFlowImg from './assets/projects/code-flow.png'
 import autoDeskImg from './assets/projects/automation-desk.png'
-import gallery01 from './assets/gallery/01-get-some-airsoft.png'
-import gallery02 from './assets/gallery/02-smart-security-pros.png'
-import gallery03 from './assets/gallery/03-patch-sample-03.png'
-import gallery04 from './assets/gallery/04-patch-sample-04.png'
-import gallery05 from './assets/gallery/05-patch-sample-05.png'
-import gallery06 from './assets/gallery/06-patch-sample-06.png'
-import gallery07 from './assets/gallery/07-us-flag-patches.png'
-import gallery08 from './assets/gallery/08-between-the-trees.png'
-import gallery09 from './assets/gallery/09-rlsc-harrisburg.png'
-import gallery10 from './assets/gallery/10-new-york-patch.png'
-import gallery11 from './assets/gallery/11-rose-hoodie.png'
-import gallery12 from './assets/gallery/12-pink-shhh-hoodie.png'
-import gallery13 from './assets/gallery/13-solitude-wolf-hoodie.png'
-import gallery14 from './assets/gallery/14-black-hoodie-back.png'
-import gallery15 from './assets/gallery/15-maroon-hoodie.png'
-import gallery16 from './assets/gallery/16-porsche-911-tee.png'
-import gallery17 from './assets/gallery/17-rider-tee.png'
-import gallery18 from './assets/gallery/18-cyan-tee.png'
-import gallery19 from './assets/gallery/19-navy-bluestone-tee.png'
-import gallery20 from './assets/gallery/20-hurricane-tee-a.png'
-import gallery22 from './assets/gallery/22-your-logo-hoodie.png'
 import './App.css'
 
 const navLinks = [
@@ -37,7 +16,6 @@ const navLinks = [
   { href: '#projects', label: 'Projects' },
   { href: '#features', label: 'Features' },
   { href: '#skills', label: 'Skills' },
-  { href: '#gallery', label: 'Gallery' },
   { href: '#contact', label: 'Contact' },
   { href: '#faqs', label: 'FAQs' },
 ]
@@ -211,30 +189,6 @@ const faqs = [
   },
 ]
 
-const galleryItems = [
-  { src: gallery01, title: 'Get Some Airsoft', tag: 'Patch' },
-  { src: gallery02, title: 'Smart Security Pros', tag: 'PVC' },
-  { src: gallery03, title: 'Custom Emblem', tag: 'Patch' },
-  { src: gallery04, title: 'Brand Badge', tag: 'Patch' },
-  { src: gallery05, title: 'Tactical Mark', tag: 'Patch' },
-  { src: gallery06, title: 'Crest Design', tag: 'Patch' },
-  { src: gallery07, title: 'US Flag Set', tag: 'Patch' },
-  { src: gallery08, title: 'Between the Trees', tag: 'Logo' },
-  { src: gallery09, title: 'RLSC Harrisburg', tag: 'Patch' },
-  { src: gallery10, title: 'New York', tag: 'Embroidery' },
-  { src: gallery11, title: 'Rose Bouquet Hoodie', tag: 'Apparel' },
-  { src: gallery12, title: 'Moment Hoodie', tag: 'Apparel' },
-  { src: gallery13, title: 'Solitude Wolf', tag: 'Streetwear' },
-  { src: gallery14, title: 'Blank Black Hoodie', tag: 'Apparel' },
-  { src: gallery15, title: 'Maroon Hoodie', tag: 'Apparel' },
-  { src: gallery16, title: 'Porsche 911 Tee', tag: 'Apparel' },
-  { src: gallery17, title: 'Rider Tee', tag: 'Apparel' },
-  { src: gallery18, title: 'Cyan Tee', tag: 'Apparel' },
-  { src: gallery19, title: 'Blue Stone Tee', tag: 'Apparel' },
-  { src: gallery20, title: 'Hurricane Tee', tag: 'Apparel' },
-  { src: gallery22, title: 'Custom Logo Hoodie', tag: 'Mockup' },
-]
-
 function useReveal(options = {}) {
   const ref = useRef(null)
 
@@ -312,14 +266,13 @@ function App() {
   const [formStatus, setFormStatus] = useState('idle')
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const [activeSection, setActiveSection] = useState('home')
-  const [galleryOpen, setGalleryOpen] = useState(null)
   const typed = useTypewriter(typedRoles)
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20)
 
-      const ids = ['home', 'projects', 'gallery', 'features', 'skills', 'contact', 'faqs']
+      const ids = ['home', 'projects', 'features', 'skills', 'contact', 'faqs']
       let current = 'home'
       for (const id of ids) {
         const el = document.getElementById(id)
@@ -334,28 +287,11 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen || galleryOpen !== null ? 'hidden' : ''
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [menuOpen, galleryOpen])
-
-  useEffect(() => {
-    if (galleryOpen === null) return undefined
-    const onKey = (event) => {
-      if (event.key === 'Escape') setGalleryOpen(null)
-      if (event.key === 'ArrowRight') {
-        setGalleryOpen((i) => (i === null ? 0 : (i + 1) % galleryItems.length))
-      }
-      if (event.key === 'ArrowLeft') {
-        setGalleryOpen((i) =>
-          i === null ? 0 : (i - 1 + galleryItems.length) % galleryItems.length,
-        )
-      }
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [galleryOpen])
+  }, [menuOpen])
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -767,40 +703,6 @@ function App() {
           </div>
         </section>
 
-        <section className="section gallery" id="gallery">
-          <div className="container">
-            <Reveal>
-              <div className="section__head section__head--row">
-                <div>
-                  <p className="eyebrow">Gallery</p>
-                  <h2>Patches, apparel &amp; custom art.</h2>
-                </div>
-                <p className="lead lead--tight">
-                  Selected embroidery, PVC, and apparel designs — click any piece to view larger.
-                </p>
-              </div>
-            </Reveal>
-
-            <div className="gallery-grid">
-              {galleryItems.map((item, index) => (
-                <button
-                  key={item.title}
-                  type="button"
-                  className="gallery-card"
-                  onClick={() => setGalleryOpen(index)}
-                  style={{ '--i': index }}
-                >
-                  <img src={item.src} alt={item.title} loading="lazy" />
-                  <span className="gallery-card__meta">
-                    <strong>{item.title}</strong>
-                    <em>{item.tag}</em>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="section contact" id="contact">
           <div className="container">
             <Reveal>
@@ -994,62 +896,6 @@ function App() {
           </div>
         </div>
       </footer>
-
-      {galleryOpen !== null ? (
-        <div
-          className="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={galleryItems[galleryOpen].title}
-          onClick={() => setGalleryOpen(null)}
-        >
-          <button
-            type="button"
-            className="lightbox__close"
-            aria-label="Close gallery"
-            onClick={() => setGalleryOpen(null)}
-          >
-            ×
-          </button>
-          <button
-            type="button"
-            className="lightbox__nav lightbox__nav--prev"
-            aria-label="Previous image"
-            onClick={(event) => {
-              event.stopPropagation()
-              setGalleryOpen(
-                (galleryOpen - 1 + galleryItems.length) % galleryItems.length,
-              )
-            }}
-          >
-            ‹
-          </button>
-          <figure
-            className="lightbox__figure"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <img
-              src={galleryItems[galleryOpen].src}
-              alt={galleryItems[galleryOpen].title}
-            />
-            <figcaption>
-              <strong>{galleryItems[galleryOpen].title}</strong>
-              <span>{galleryItems[galleryOpen].tag}</span>
-            </figcaption>
-          </figure>
-          <button
-            type="button"
-            className="lightbox__nav lightbox__nav--next"
-            aria-label="Next image"
-            onClick={(event) => {
-              event.stopPropagation()
-              setGalleryOpen((galleryOpen + 1) % galleryItems.length)
-            }}
-          >
-            ›
-          </button>
-        </div>
-      ) : null}
 
       <a
         className={`back-top ${scrolled ? 'is-visible' : ''}`}
