@@ -1,0 +1,124 @@
+:root {
+  /* Midnight canvas */
+  --bg: #071018;
+  --bg-elevated: #0c1622;
+  --bg-soft: #101c2b;
+  --ink: #edf4ff;
+  --ink-soft: #9db0c7;
+  --ink-muted: #6f839c;
+  --white: #ffffff;
+  --on-accent: #041018;
+
+  /* Attractive accents (teal + sky + coral) */
+  --accent: #3ee0c2;
+  --accent-deep: #24c4a8;
+  --accent-2: #6ea8ff;
+  --accent-warm: #ff8f6b;
+  --accent-rgb: 62, 224, 194;
+  --accent-2-rgb: 110, 168, 255;
+  --warm-rgb: 255, 143, 107;
+
+  /* Legacy aliases — keep existing styles working */
+  --yellow: var(--accent);
+  --yellow-deep: var(--accent-deep);
+  --line: rgba(148, 180, 220, 0.14);
+
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-mono: 'Poppins', sans-serif;
+
+  --text-label: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-section: clamp(1.75rem, 3.8vw, 2.5rem);
+  --text-hero: clamp(2.75rem, 8vw, 5.25rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.4;
+  --leading-body: 1.65;
+  --tracking-tight: -0.02em;
+  --tracking-display: -0.03em;
+  --tracking-label: 0.1em;
+
+  --text-xs: var(--text-label);
+  --text-xl: var(--text-section);
+  --text-2xl: var(--text-section);
+
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: var(--leading-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% -10%, rgba(var(--accent-rgb), 0.12), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 90% 10%, rgba(var(--accent-2-rgb), 0.1), transparent 50%),
+    var(--bg);
+  color: var(--ink);
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: #fff;
+}
+
+p {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
